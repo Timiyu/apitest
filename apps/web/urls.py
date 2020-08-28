@@ -15,9 +15,10 @@ Including another URLconf
 """
 
 from django.urls import path
+from apps.web import views
 
 name_space = 'web'
 
 urlpatterns = [
-    path('index/', )
+    path('', views.index, name='index')
 ]

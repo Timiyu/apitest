@@ -4,11 +4,90 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}| 测试平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="" name="description"/>
+    <meta content="singdl" name="author"/>
+    <meta content="" name="keywords"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
+
+    <!-- javectormap -->
+    <link href="{% static 'admin/libs/jqvmap/jqvmap.min.css' %}" rel="stylesheet" type="text/css"/>
+
+
+    <!--calendar css-->
+    <link href="{% static 'admin/libs/fullcalendar/fullcalendar.min.css' %}" rel="stylesheet" type="text/css"/>
+
+    <!-- Icons css -->
+    <link href="{% static 'admin/libs/@mdi/font/css/materialdesignicons.min.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'admin/libs/dripicons/webfont/webfont.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'admin/libs/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'admin/libs/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'admin/libs/metismenu/dist/metisMenu.css' %}" rel="stylesheet" type="text/css"/>
+
+    <!-- element--ui -->
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="{% static 'admin/libs/element-ui/lib/theme-chalk/index.css' %}" rel="stylesheet"
+          type="text/css">
+
+    <!-- App css -->
+    <link href="{% static 'admin/libs/jquery-toast-plugin/jquery.toast.min.css' %}" rel="stylesheet" type="text/css"/>
+    <!-- build:css -->
+    <link href="{% static 'admin/css/app.css' %}" rel="stylesheet" type="text/css"/>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    {% block css %}{% endblock %}
+    <!-- endbuild -->
 </head>
 <body>
+{% block header %}
 {% include 'header.html' %}
+{% endblock %}
 {% block content %}{% endblock %}
+{% block footer %}
 {% include 'footer.html' %}
+{% endblock %}
 </body>
+<!-- 引入vue框架 -->
+{#<script src="{% static 'admin/libs/vue/dist/vue.min.js' %}"></script>#}
+<script src="{% static 'admin/libs/vue/dist/vue.js' %}"></script>
+<script src="{% static 'admin/libs/axios/dist/axios.js' %}"></script>
 
+<!-- 引入element组件库 -->
+<script src="{% static 'admin/libs/element-ui/lib/index.js' %}"></script>
+
+<!-- 引入iview组件库 -->
+<script src="{% static 'website/libs/view-design/dist/iview.js' %}"></script>
+
+<!--Bootstrap Vue 库 -->
+<script src="{% static 'website/libs/bootstrap-vue/dist/bootstrap-vue.min.js' %}"></script>
+<!--All jQuery, Third Party Plugins & Activation (main.js) Files-->
+<script src="{% static 'website/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+<!-- Jquery Min Js -->
+<script src="{% static 'website/libs/aduca_static/js/jquery-1.10.2.min.js' %}"></script>
+<!-- Popper Min Js -->
+<script src="{% static 'website/js/vendor/popper.min.js' %}"></script>
+<!-- Bootstrap Min Js -->
+<script src="{% static 'website/js/vendor/bootstrap.min.js' %}"></script>
+<!-- Plugins Js-->
+<script src="{% static 'website/js/plugins.js' %}"></script>
+
+<script src="{% static 'website/libs/aduca_static/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'website/libs/aduca_static/js/magnific-popup.min.js' %}"></script>
+<script src="{% static 'website/libs/aduca_static/js/waypoint.min.js' %}"></script>
+<script src="{% static 'website/libs/aduca_static/js/isotope.js' %}"></script>
+<script src="{% static 'website/libs/aduca_static/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'website/libs/aduca_static/js/lightgallery.js' %}"></script>
+<script src="{% static 'website/libs/aduca_static/js/wow.js' %}"></script>
+<script src="{% static 'website/libs/aduca_static/js/smooth-scrolling.js' %}"></script>
+<script src="{% static 'website/libs/aduca_static/js/main.js' %}"></script>
+
+{% block javascript %}{% endblock %}
 </html>
