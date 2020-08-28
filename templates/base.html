@@ -2,11 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{% include 'header.html' %}
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}| 测试平台</title>
 </head>
 <body>
+{% include 'header.html' %}
 {% block content %}{% endblock %}
-
-</body>
 {% include 'footer.html' %}
+</body>
+
 </html>
