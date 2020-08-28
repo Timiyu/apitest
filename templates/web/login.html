@@ -88,7 +88,6 @@
                     data: JSON.stringify({
                         'username': username,
                         'password': password,
-                        'next': "{{ request.GET.next }}",
                     }),
                     datatype: 'json',
                     async: true,
@@ -98,7 +97,7 @@
                     success: function (data) {
                         if (data.success == 'success') {
                             $.NotificationApp.send("提示信息", "登陆成功，即将跳转到登陆界面！", 'top-center', '#5ba035', 'success');
-                            window.location.href = data.next;
+                            window.location.href = request.GET.next;
                         } else {
                             $.NotificationApp.send("提示信息!", data.message, 'top-center', '#b56d12', 'warning');
                         }

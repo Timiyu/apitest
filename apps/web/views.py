@@ -5,6 +5,7 @@ from django.views import View
 from django.conf import settings
 import json
 
+
 # Create your views here.
 class Login(View):
     def get(self, request):
@@ -15,11 +16,9 @@ class Login(View):
         data = json.loads(data, encoding='utf8')
         username = data.get('username', None)
         password = data.get('password', None)
-        print(username,password)
-        next = data.get('next', '')
-        if next == "":
-            next = "/login"
-        return JsonResponse({'success':'success', 'next':''}, safe=False)
+        print(username, password)
+        return JsonResponse({'success': 'success'}, safe=False)
+
 
 @login_required(login_url=settings.WEB_LOGIN_URL)
 def index(request):
