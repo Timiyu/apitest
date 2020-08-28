@@ -14,8 +14,8 @@ class Login(View):
     def post(self, request):
         data = request.body
         data = json.loads(data, encoding='utf8')
-        username = data.get('username', None)
-        password = data.get('password', None)
+        username = data.get('username', '')
+        password = data.get('password', '')
         print(username, password)
         return JsonResponse({'success': 'success'}, safe=False)
 
