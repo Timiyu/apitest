@@ -61,31 +61,55 @@
 <!-- 引入element组件库 -->
 <script src="{% static 'admin/libs/element-ui/lib/index.js' %}"></script>
 
-<!-- 引入iview组件库 -->
-<script src="{% static 'website/libs/view-design/dist/iview.js' %}"></script>
+<!-- jQuery  -->
+<script src="{% static 'admin/libs/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'admin/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'admin/libs/jquery-slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'admin/libs/metismenu/dist/metisMenu.js' %}"></script>
 
-<!--Bootstrap Vue 库 -->
-<script src="{% static 'website/libs/bootstrap-vue/dist/bootstrap-vue.min.js' %}"></script>
-<!--All jQuery, Third Party Plugins & Activation (main.js) Files-->
-<script src="{% static 'website/js/vendor/modernizr-3.6.0.min.js' %}"></script>
-<!-- Jquery Min Js -->
-<script src="{% static 'website/libs/aduca_static/js/jquery-1.10.2.min.js' %}"></script>
-<!-- Popper Min Js -->
-<script src="{% static 'website/js/vendor/popper.min.js' %}"></script>
-<!-- Bootstrap Min Js -->
-<script src="{% static 'website/js/vendor/bootstrap.min.js' %}"></script>
-<!-- Plugins Js-->
-<script src="{% static 'website/js/plugins.js' %}"></script>
+<!-- KNOB JS -->
+<script src="{% static 'admin/libs/jquery-knob/jquery.knob.min.js' %}"></script>
 
-<script src="{% static 'website/libs/aduca_static/js/owl.carousel.min.js' %}"></script>
-<script src="{% static 'website/libs/aduca_static/js/magnific-popup.min.js' %}"></script>
-<script src="{% static 'website/libs/aduca_static/js/waypoint.min.js' %}"></script>
-<script src="{% static 'website/libs/aduca_static/js/isotope.js' %}"></script>
-<script src="{% static 'website/libs/aduca_static/js/jquery.counterup.min.js' %}"></script>
-<script src="{% static 'website/libs/aduca_static/js/lightgallery.js' %}"></script>
-<script src="{% static 'website/libs/aduca_static/js/wow.js' %}"></script>
-<script src="{% static 'website/libs/aduca_static/js/smooth-scrolling.js' %}"></script>
-<script src="{% static 'website/libs/aduca_static/js/main.js' %}"></script>
+<script src="{% static 'admin/libs/chart.js/Chart.bundle.min.js' %}"></script>
+
+
+<script src="{% static 'admin/libs/jqvmap/jquery.vmap.min.js' %}"></script>
+<script src="{% static 'admin/libs/jqvmap/maps/jquery.vmap.usa.js' %}"></script>
+
+
+<!-- Dashboard Init JS -->
+<script src="{% static 'admin/libs/tinymce/tinymce.min.js' %}"></script>
+<script src="{% static 'admin/libs/jquery-toast-plugin/jquery.toast.min.js' %}"></script>
+<script src="{% static 'admin/js/jquery.toastr.js' %}"></script>
+
+<!-- App js -->
+<script src="{% static 'admin/js/jquery.core.js' %}"></script>
+<script src="{% static 'admin/js/jquery.app.js' %}"></script>
+
+
+<!--  IE需要es6-promise -->
+<script src="{% static 'admin/libs/aliyunvodtools/aliyun-upload-sdk/lib/es6-promise.min.js' %}"></script>
+<script src="{% static 'admin/libs/aliyunvodtools/aliyun-upload-sdk/lib/aliyun-oss-sdk-5.3.1.min.js' %}"></script>
+<script src="{% static 'admin/libs/aliyunvodtools/aliyun-upload-sdk/aliyun-upload-sdk-1.5.0.min.js' %}"></script>
+<script>
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+</script>
 
 {% block javascript %}{% endblock %}
 </html>

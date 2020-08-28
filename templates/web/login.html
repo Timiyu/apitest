@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}用户登录{% endblock %}
+{% block css %}{% endblock %}
+
+{% block content %}
+
+    <!-- Login -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="wrapper-page">
+                        <div class="account-pages">
+                            <div class="account-box">
+
+                                <!-- Logo box-->
+                                <div class="account-logo-box">
+                                    <h2 class="text-uppercase text-center">
+                                        <a href="{% url 'web:index' %}" class="text-success">
+                                            <span><img src="{% static 'admin/images/logo_dark.png' %}" alt=""
+                                                       height="40"></span>
+                                        </a>
+                                    </h2>
+                                </div>
+
+                                <div class="account-content">
+                                    <form>
+                                        {{ crsf_token }}
+                                        <div class="form-group mb-3">
+                                            <label for="username" class="font-weight-medium">账号</label>
+                                            <input class="form-control" type="text" id="username" required=""
+                                                   placeholder="用户名/手机号/邮箱">
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="password" class="font-weight-medium">密码</label>
+                                            <input class="form-control" type="password" required="" id="password"
+                                                   placeholder="密码">
+                                        </div>
+
+                                    </form> <!-- end form -->
+                                    <div class="form-group row text-center">
+                                        <div class="col-12">
+                                            <button class="btn btn-block btn-success waves-effect waves-light btn-rounded"
+                                                    onclick="login()">登录
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div> <!-- end account-content -->
+
+                            </div> <!-- end account-box -->
+                        </div>
+                        <!-- end account-page-->
+                    </div>
+                    <!-- end wrapper-page -->
+
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+        </div> <!-- end container -->
+    </section>
+    <!-- END HOME -->
+
+
+
+{% endblock %}
+
+{% block javascript %}
+
+    <script>
+        function login() {
+            username = document.getElementById('username').value;
+            {#password = psencrypt(document.getElementById('password').value, "{{ public_key|safe }}");#}
+            password = document.getElementById('password').value;
+            {#luosimaocaptcha = $("#lc-captcha-response").val();#}
+            if (username == "") {
+                $.NotificationApp.send("提示信息!", "请您先输入用户名！", 'top-center', '#b56d12', 'warning');
+            } else if (password == "") {
+                $.NotificationApp.send("提示信息!", "您必须输入密码！", 'top-center', '#b56d12', 'warning');
+
+            } else {
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: "{% url 'web:login' %}",
+                    data: JSON.stringify({
+                        'username': username,
+                        'password': password,
+                        'next': "{{ request.GET.next }}",
+                    }),
+                    datatype: 'json',
+                    async: true,
+                    beforeSend: function (xhr, settings) {
+                        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                    },
+                    success: function (data) {
+                        if (data.success == 'success') {
+                            $.NotificationApp.send("提示信息", "登陆成功，即将跳转到登陆界面！", 'top-center', '#5ba035', 'success');
+                            window.location.href = data.next;
+                        } else {
+                            $.NotificationApp.send("提示信息!", data.message, 'top-center', '#b56d12', 'warning');
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+{% endblock %}
